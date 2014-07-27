@@ -1,0 +1,15 @@
+# Fairness for Baton Rouge
+
+This site is built with [Middleman](http://middlemanapp.com), a static site generator. The source is available in the `source/` directory. Middleman builds the site from the parsed ERb, CoffeeScript and SCSS into a `build/` folder. The production site on S3 mimics this folder.
+
+To run locally:
+
+    middleman server
+
+To build:
+
+    middleman build
+
+To deploy to S3:
+
+    middleman s3_sync
