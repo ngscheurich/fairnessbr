@@ -1,7 +1,110 @@
-@import 'bootstrap-sprockets';
-@import 'bootstrap';
+$adelle-font-family: "adelle", serif;
+$proxima-nova-font-family: "proxima-nova", sans-serif;
 
-.speaker {
-  text-align: right;
-  font-weight: bold;
+$font-family-base: $adelle-font-family;
+$headings-font-family: $proxima-nova-font-family;
+
+$red-color: #d10a0a;
+$yellow-color: #d1bf0a;
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+
+.tooltip, .popover-content {
+  font-family: $proxima-nova-font-family;
+  text-transform: none;
+  font-weight: normal;
+}
+
+header {
+  margin-top: 10px;
+
+  h1 {
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 15px;
+  }
+}
+
+.intro {
+  margin-bottom: 100px;
+
+  p {
+    font-family: $proxima-nova-font-family;
+    font-size: 16px;
+  }
+
+  .action {
+    margin-top: 35px;
+  }
+
+  .me {
+    @include clearfix();
+    margin-top: 35px;
+
+    .me-img {
+      @extend .pull-left;
+      margin-right: 44px;
+    }
+
+    .me-text {
+      @extend .pull-left;
+      margin: 27px 0;
+    }
+  }
+}
+
+.transcript {
+  padding: 50px 0;
+
+  &:target {
+    .speaker {
+      border-top: 3px solid $yellow-color;
+    }
+  }
+
+  .speaker {
+    border-top: 3px solid $red-color;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: $proxima-nova-font-family;
+    padding-right: 0px;
+    padding-top: 10px;
+    margin-top: 4px;
+    font-size: 16px;
+
+    @media (min-width: $screen-md-min) {
+      text-align: right;
+    }
+  }
+
+  .text {
+    .text-paragraph {
+      padding-top: 20px;
+
+      &:first-child {
+        padding-top: 19px;
+      }
+
+      &:target {
+        p {
+          padding-left: 10px;
+          border-left: 3px solid $yellow-color;
+        }
+      }
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+footer {
+  font-family: $proxima-nova-font-family;
+  text-align: center;
+  margin-top: 50px;
+  padding-top: 10px;
+  padding-bottom: 25px;
 }

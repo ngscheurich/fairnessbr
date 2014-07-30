@@ -36,3 +36,17 @@ configure :build do
     options.advpng_options = false
   end
 end
+
+helpers do
+  def speaker_id(index)
+    "speaker-#{index}"
+  end
+
+  def comment_id(speaker, comment)
+    "comment-s#{speaker}-#{comment}"
+  end
+
+  def comment_with_callouts(comment)
+    comment.gsub(/(\[[0-9]{2}:[0-9]{2}:[0-9]{2}\])/, '<a href="#">\1</a>')
+  end
+end
