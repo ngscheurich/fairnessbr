@@ -11,9 +11,17 @@ configure :development do
   activate :livereload, no_swf: true
 
   # Deploy to S3
-  # activate :s3_sync do |options|
-  #   options.bucket = ''
-  # end
+  activate :s3_sync do |options|
+    options.bucket = 'fairnessbr.com'
+  end
+
+  # Setup Cloudfront for invalidations
+  activate :cloudfront do |options|
+    options.access_key_id = ENV['AWS_ACCESS_KEY_ID']
+    options.secret_access_key = ENV['AWS_SECRET_ACCESS_KEY']
+    options.distribution_id = 'E2AZH2YQ718VOT'
+    options.filter = /\.html$/i
+  end
 end
 
 # Build-specific configuration
@@ -23,6 +31,10 @@ configure :build do
 
   # Minify Javascript on build
   activate :minify_javascript
+
+  # Set asset host
+  # Bug - https://github.com/middleman/middleman-sprockets/issues/46
+  # activate :asset_host, host: 'http://assets.fairnessbr.com'
 
   # Enable cache buster
   activate :asset_hash
